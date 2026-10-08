@@ -3,6 +3,7 @@ import { Card } from './components/card.tsx';
 import { Counter } from './components/counter.tsx';
 import type { seat } from './types.ts'
 import { List } from './components/list.tsx';
+import Form from './components/form.tsx';
 
 const menu:seat[] = [
   {id: 1, name: "lower", price: 1000},
@@ -32,6 +33,13 @@ function App() {
       </div>
       <div>
         <List seats= {menu}/>
+      </div>
+      <div>
+        <Form
+        onSumbit={(order)=>{
+          console.log("placed", order.name, order.seats )
+        }
+      }/>
       </div>
     </>
   )
