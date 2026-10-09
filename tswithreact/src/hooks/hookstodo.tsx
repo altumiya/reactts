@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFetch } from './useFetch';
 
 interface Todo {
@@ -17,7 +16,7 @@ export function TodoDisplay({ todoId }: TodoDisplayProps) {
     `https://jsonplaceholder.typicode.com/todos/${todoId}`
   );
 
-  if (loading) return <p>Loading todo #{todoId}...</p>;
+  if (loading && !data) return <p>Loading todo #{todoId}...</p>;
   if (error) return <p style={{ color: 'red' }}>Error: {error.message}</p>;
   if (!data) return <p>No data found.</p>;
 
@@ -27,8 +26,11 @@ export function TodoDisplay({ todoId }: TodoDisplayProps) {
       padding: '16px', 
       borderRadius: '8px',
       backgroundColor: '#f9f9f9',
-      maxWidth: '400px'
+      color: '#333',
+      maxWidth: '400px',
+      margin: '0 auto',
     }}>
+      {loading && <p role="status">Loading todo #{todoId}...</p>}
       <h2 style={{ marginTop: 0 }}>Todo #{data.id}</h2>
       <p><strong>Title:</strong> {data.title}</p>
       <p>

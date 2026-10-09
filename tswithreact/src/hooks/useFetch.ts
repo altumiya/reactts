@@ -14,7 +14,7 @@ export function useFetch<T>(url: string): FetchProps<T> {
     });
 
     useEffect(() => {
-        setState({ data: null, loading: true, error: null });
+        setState((current) => ({ ...current, loading: true, error: null }));
         const controller = new AbortController();
         const { signal } = controller;
         const fetchData = async()=> {
@@ -30,6 +30,9 @@ export function useFetch<T>(url: string): FetchProps<T> {
                     error: null
                 });
             } catch (error : unknown) {
+                if (signal.aborted) {
+                    return;
+                }
                 setState({
                     data: null,
                     loading: false,
