@@ -8,20 +8,35 @@ interface Todo {
   completed: boolean;
 }
 
-export function TodoDisplay() {
+interface TodoDisplayProps {
+  todoId: number; 
+}
+
+export function TodoDisplay({ todoId }: TodoDisplayProps) {
   const { data, loading, error } = useFetch<Todo>(
-    'https://jsonplaceholder.typicode.com/todos/1'
+    `https://jsonplaceholder.typicode.com/todos/${todoId}`
   );
 
-  if (loading) return <p>Loading todo...</p>;
+  if (loading) return <p>Loading todo #{todoId}...</p>;
   if (error) return <p style={{ color: 'red' }}>Error: {error.message}</p>;
-  if (!data) return null;
+  if (!data) return <p>No data found.</p>;
 
   return (
-    <div>
-      <h2>Todo #{data.id}</h2>
+    <div style={{ 
+      border: '1px solid #ddd', 
+      padding: '16px', 
+      borderRadius: '8px',
+      backgroundColor: '#f9f9f9',
+      maxWidth: '400px'
+    }}>
+      <h2 style={{ marginTop: 0 }}>Todo #{data.id}</h2>
       <p><strong>Title:</strong> {data.title}</p>
-      <p><strong>Status:</strong> {data.completed ? 'Completed' : 'Pending'}</p>
+      <p>
+        <strong>Status:</strong>{' '}
+        <span style={{ color: data.completed ? 'green' : 'orange', fontWeight: 'bold' }}>
+          {data.completed ? '✅ Completed' : '⏳ Pending'}
+        </span>
+      </p>
     </div>
   );
 }
