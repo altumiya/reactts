@@ -4,6 +4,7 @@ import { Counter } from './components/counter.tsx';
 import type { seat } from './types.ts'
 import { List } from './components/list.tsx';
 import Form from './components/form.tsx';
+import Cards2 from './components/cards2.tsx';
 
 const menu:seat[] = [
   {id: 1, name: "lower", price: 1000},
@@ -40,6 +41,12 @@ function App() {
           console.log("placed", order.name, order.seats )
         }
       }/>
+      </div>
+      <div>
+        <Cards2
+        title="Iphone 14"
+        footer= {<button>Buy Now</button>}  //react node
+        />
       </div>
     </>
   )
