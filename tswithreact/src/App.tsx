@@ -6,6 +6,7 @@ import { List } from './components/list.tsx';
 import Form from './components/form.tsx';
 import Cards2 from './components/cards2.tsx';
 import { TaskManager } from './components/taskmng.tsx';
+import Ex1 from './assets/prax/ex1.tsx';
 
 const menu:seat[] = [
   {id: 1, name: "lower", price: 1000},
@@ -51,8 +52,10 @@ export default function App() {
         <TaskManager/>
       
     </div>
+    <div>
+      <Ex1/>
+    </div>
     </>
   )
 }
-
 
