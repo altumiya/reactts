@@ -107,7 +107,6 @@ function InputBox({
   );
 }
 
-// 3. Main App Component
 export default function Ex3(): React.JSX.Element {
   const [amount, setAmount] = useState<number>(1);
   const [from, setFrom] = useState<string>("usd");
@@ -126,7 +125,6 @@ export default function Ex3(): React.JSX.Element {
 
   const convert = () => {
     if (currencyInfo && currencyInfo[to]) {
-      // Fixed: added missing multiplication operator (*)
       setConvertedAmount(amount * currencyInfo[to]);
     }
   };
