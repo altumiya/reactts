@@ -13,6 +13,7 @@ import Ex4 from './assets/prax/ex4.tsx';
 import Ex5 from './assets/prax/ex5.tsx';
 import Ex6 from './assets/prax/ex6.tsx';
 import Ex7 from './assets/prax/ex7.tsx';
+import Ex8 from './assets/prax/ex8.tsx';
 
 const menu:seat[] = [
   {id: 1, name: "lower", price: 1000},
@@ -78,6 +79,9 @@ export default function App() {
     </div>
     <div>
       <Ex7/>
+    </div>
+    <div>
+      <Ex8/>
     </div>
     </>
   )
